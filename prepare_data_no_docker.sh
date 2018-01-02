@@ -56,6 +56,6 @@ cp object_detection/samples/cloud/cloud.yml $1/processed/.
 cat object_detection/samples/configs/faster_rcnn_resnet101_pets.config | sed "s|PATH_TO_BE_CONFIGURED|gs://com-tabtale-objectdetectiontest-data/data|g" > $1/processed/gcs_pets.config
 
 # getting object detection code and slim
-cp dist/object_detection-0.1.tar.gz processed/.
-cp slim/dist/slim-0.1.tar.gz processed/.
+cp dist/object_detection-0.1.tar.gz $1/processed/.
+cp slim/dist/slim-0.1.tar.gz $1/processed/.
 
