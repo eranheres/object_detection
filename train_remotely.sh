@@ -9,6 +9,6 @@ gcloud ml-engine jobs submit training object_detection_`date +%s` \
     --region us-central1 \
     --config processed/cloud.yml \
     -- \
-    --train_dir=gs://com-tabtale-objectdetectiontest-data/train \
+    --train_dir=gs://com-tabtale-objectdetectiontest-data/data/train \
     --pipeline_config_path=gs://com-tabtale-objectdetectiontest-data/data/gcs_pets.config
 
