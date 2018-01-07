@@ -5,7 +5,7 @@ import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--dict', dest='dict')
-parser.add_argument('--destpath', dest='destpath')
+parser.add_argument('--output_path', dest='destpath')
 parser.add_argument('--ratio', dest='ratio', type=int)
 
 
