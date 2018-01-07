@@ -7,6 +7,7 @@ flags.DEFINE_string('output_path', '', 'Path to output TFRecord')
 flags.DEFINE_string('dict_path', '', 'Path to dict file')
 FLAGS = flags.FLAGS
 
+BOX_ID = 1
 
 def create_tf_example(image_path, item):
     size = item['size']
@@ -19,14 +20,14 @@ def create_tf_example(image_path, item):
         encoded_image_data = fid.read()  # Encoded image bytes
     image_format = b'jpeg'    # b'jpeg' or b'png'
 
-    xmins = [box[0]/width]  # List of normalized left x coordinates in bounding box (1 per box)
-    xmaxs = [box[2]/width]  # List of normalized right x coordinates in bounding box
+    xmins = [box[0]/float(width)]  # List of normalized left x coordinates in bounding box (1 per box)
+    xmaxs = [box[2]/float(width)]  # List of normalized right x coordinates in bounding box
     # (1 per box)
-    ymins = [box[1]/height]  # List of normalized top y coordinates in bounding box (1 per box)
-    ymaxs = [box[3]/height]  # List of normalized bottom y coordinates in bounding box
+    ymins = [box[1]/float(height)]  # List of normalized top y coordinates in bounding box (1 per box)
+    ymaxs = [box[3]/float(height)]  # List of normalized bottom y coordinates in bounding box
     # (1 per box)
-    classes_text = ['eran_label']  # List of string class name of bounding box (1 per box)
-    classes = [55000]  # List of integer class id of bounding box (1 per box)
+    classes_text = ['Abyssinian']  # List of string class name of bounding box (1 per box)
+    classes = [BOX_ID]  # List of integer class id of bounding box (1 per box)
 
     tf_label_and_data = tf.train.Example(features=tf.train.Features(feature={
         'image/height': dataset_util.int64_feature(height),
